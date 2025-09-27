@@ -30,16 +30,18 @@ public partial class ContactsPage : ContentPage
 
     private async void ContactsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var contact = e.CurrentSelection.FirstOrDefault() as Contact;
-        if (contact != null)
+        if (((CollectionView)sender).SelectedItem != null)
         {
-            await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?id={contact.Id}");
+            var contact = e.CurrentSelection.FirstOrDefault() as Contact;
+            if (contact != null)
+            {
+                await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?id={contact.Id}");
 
+            }
+            ((CollectionView)sender).SelectedItem = null;
         }
-
-        // Clear selection so the same item can be tapped again later
-        ((CollectionView)sender).SelectedItem = null;
     }
+
 
     private async void BtnAdd_Clicked(object sender, EventArgs e)
     {
