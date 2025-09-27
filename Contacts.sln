@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts", "Contacts.csproj", "{13EF26A9-6740-4763-B0C7-2E7A194308D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "..\Controls\Controls.csproj", "{09DAC3AB-F4C7-FEAF-A17B-645748F32F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeMode", "..\ThemeMode\ThemeMode.csproj", "{F7DFD0F8-8053-676A-2C5D-864952DD0790}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +17,17 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{13EF26A9-6740-4763-B0C7-2E7A194308D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{13EF26A9-6740-4763-B0C7-2E7A194308D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EF26A9-6740-4763-B0C7-2E7A194308D6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{13EF26A9-6740-4763-B0C7-2E7A194308D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13EF26A9-6740-4763-B0C7-2E7A194308D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DAC3AB-F4C7-FEAF-A17B-645748F32F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DAC3AB-F4C7-FEAF-A17B-645748F32F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DAC3AB-F4C7-FEAF-A17B-645748F32F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DAC3AB-F4C7-FEAF-A17B-645748F32F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DFD0F8-8053-676A-2C5D-864952DD0790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DFD0F8-8053-676A-2C5D-864952DD0790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DFD0F8-8053-676A-2C5D-864952DD0790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DFD0F8-8053-676A-2C5D-864952DD0790}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

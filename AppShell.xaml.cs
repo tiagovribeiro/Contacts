@@ -1,4 +1,5 @@
 ﻿using Contacts.Views;
+using ThemeMode.Services;
 
 namespace Contacts
 {
@@ -7,7 +8,6 @@ namespace Contacts
         public AppShell()
         {
             InitializeComponent();
-
             RegisterRoutes();
         }
 
@@ -16,6 +16,7 @@ namespace Contacts
             Routing.RegisterRoute(nameof(ContactsPage), typeof(ContactsPage));
             Routing.RegisterRoute(nameof(AddContactPage), typeof(AddContactPage));
             Routing.RegisterRoute(nameof(EditContactPage), typeof(EditContactPage));
+            Routing.RegisterRoute(nameof(TestePage), typeof(TestePage));
         }
     }
 }

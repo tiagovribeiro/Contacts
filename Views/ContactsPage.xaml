@@ -4,7 +4,7 @@
              x:Class="Contacts.Views.ContactsPage"
              Title="Contacts">
 
-    <Grid RowDefinitions="50, *, 50" 
+    <Grid RowDefinitions="50, *, 50, 50" 
           ColumnDefinitions="*"
           Padding="5"
           >
@@ -15,39 +15,47 @@
             TextChanged="SearchBar_TextChanged"
             >
         </SearchBar>
-        <ListView
-            Grid.Row="1" Grid.Column="1"
+        <CollectionView
             x:Name="ContactsList"
-            BackgroundColor="Transparent"
-            SeparatorColor="Silver"
-            RowHeight="65"
-            ItemSelected="ContactsList_ItemSelected"
-            ItemTapped="ContactsList_ItemTapped"
-            >
-            <ListView.ItemTemplate>
+            Grid.Row="1" Grid.Column="1"
+            SelectionMode="Single"
+            SelectionChanged="ContactsList_SelectionChanged">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell 
-                        Text="{Binding Name}"
-                        Detail="{Binding Email}" 
-                        >
-                        <TextCell.ContextActions>
-                            <MenuItem 
-                                x:Name="BtnDelete"
-                                Text="Delete" 
-                                IsDestructive="True"
-                                Clicked="BtnDelete_Clicked"
-                                CommandParameter="{Binding .}"
-                                ></MenuItem>
-                        </TextCell.ContextActions>
-                    </TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem 
+                                    Text="Delete"
+                                    BackgroundColor="Red"
+                                    Invoked="BtnDelete_Clicked"
+                                    CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
 
-        </ListView>
+                        <!-- Row Layout -->
+                        <Grid Padding="10" ColumnDefinitions="*,Auto" HeightRequest="65">
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                                <Label Text="{Binding Email}" FontSize="14" TextColor="Gray" />
+                            </StackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Button 
             Grid.Row="2" Grid.Column="1"
             x:Name="BtnAdd"
             Text="Add"
-            Clicked="BtnAdd_Clicked"></Button>
+            Clicked="BtnAdd_Clicked">
+        </Button>
+        <Button 
+            Grid.Row="3" Grid.Column="1"
+            x:Name="testeAdd"
+            Text="Teste"
+            Clicked="testeAdd_Clicked"
+            Margin="0, 5, 0, 0">
+        </Button>
     </Grid>
 </ContentPage>

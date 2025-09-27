@@ -1,14 +1,18 @@
 using System.Collections.ObjectModel;
 using Contacts.Models;
+using ThemeMode.Services;
 using Contact = Contacts.Models.Contact;
 
 namespace Contacts.Views;
 
 public partial class ContactsPage : ContentPage
 {
-    public ContactsPage()
+    private readonly IThemeService _themeService;
+    public ContactsPage(IThemeService themeService)
     {
         InitializeComponent();
+        _themeService = themeService;
+        _themeService.SetTheme(ThemeMode.ThemeOption.Ocean);
     }
 
     protected override void OnAppearing()
@@ -24,17 +28,17 @@ public partial class ContactsPage : ContentPage
         ContactsList.ItemsSource = new ObservableCollection<Contact>(ContactRepository.Get());
     }
 
-    private async void ContactsList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    private async void ContactsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (ContactsList.SelectedItem != null)
+        var contact = e.CurrentSelection.FirstOrDefault() as Contact;
+        if (contact != null)
         {
-            await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?id={((Contact)ContactsList.SelectedItem).Id}");
-        }
-    }
+            await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?id={contact.Id}");
 
-    private void ContactsList_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        ContactsList.SelectedItem = null;
+        }
+
+        // Clear selection so the same item can be tapped again later
+        ((CollectionView)sender).SelectedItem = null;
     }
 
     private async void BtnAdd_Clicked(object sender, EventArgs e)
@@ -44,9 +48,7 @@ public partial class ContactsPage : ContentPage
 
     private void BtnDelete_Clicked(object sender, EventArgs e)
     {
-        var contact = (sender as MenuItem)?.CommandParameter as Contact;
-
-        if (contact != null)
+        if (sender is SwipeItem swipeItem && swipeItem.CommandParameter is Contact contact)
         {
             ContactRepository.Delete(contact.Id);
             LoadContacts();
@@ -56,5 +58,10 @@ public partial class ContactsPage : ContentPage
     private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
         ContactsList.ItemsSource = new ObservableCollection<Contact>(ContactRepository.Search(((SearchBar)sender).Text));
+    }
+
+    private async void testeAdd_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(TestePage)}");
     }
 }

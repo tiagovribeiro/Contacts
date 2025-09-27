@@ -66,8 +66,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Controls\Controls.csproj" />
+	  <ProjectReference Include="..\ThemeMode\ThemeMode.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
 	  <Compile Update="Views\EditContactPage.xaml.cs">
 	    <DependentUpon>EditContactPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TestePage.xaml.cs">
+	    <DependentUpon>TestePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -82,6 +91,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EditContactPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TestePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
